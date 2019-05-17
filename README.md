@@ -1,24 +1,27 @@
-﻿# 1. 关于
+﻿# 1 关于
 
 微信公众号、小程序、支付相关操作类库。
-作者：surfsky.github.com
+surfsky.github.com
 
 
-# 2.类库结构
+# 2 类库结构
 
-App.Wechats         : 根命名空间
+```
+App.Wechats         : 本类库根命名空间
     Wechat          : 微信基类，包括一些公用的代码
     WechatConfig    : 微信配置信息
 App.Wechats.MP      : 微信小程序命名空间
-	WechatMP        : 微信小程序类
+    WechatMP        : 微信小程序类
 App.Wechats.Open    : 微信公众号命名空间
-	WechatOpen      : 微信公众号类
+    WechatOpen      : 微信公众号类
     PushMessage     : 微信公众号推送消息
 App.Wechats.Pay     : 微信支付命名空间
-	WechatPay       : 微信支付类
+    WechatPay       : 微信支付类
 
+ps.本项目依赖 App.Core.dll，请自行引用
+```
 
-# 3. 使用
+# 3 使用
 
 ## 3.1 配置参数
 
@@ -63,7 +66,7 @@ App.Wechats.Pay     : 微信支付命名空间
 请使用 App.Wechats.Pay.WechatPay 类
 
 
-# 计划
+# 4 计划
 
 - 插入日志接口或事件（记录请求数据、返回数据、解析数据），便于调试记录
 - 编撰使用文档
