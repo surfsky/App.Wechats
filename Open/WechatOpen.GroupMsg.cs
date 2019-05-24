@@ -1,6 +1,5 @@
 ﻿using App.Core;
-
-
+using System.Text;
 
 namespace App.Wechats.Open
 {
@@ -29,7 +28,7 @@ namespace App.Wechats.Open
                 msgtype = "mpnews",
                 send_ignore_reprint = 0
             };
-            var reply = HttpHelper.PostJson(url, data.ToJson());
+            var reply = HttpHelper.Post(url, data.ToJson(), Encoding.UTF8, "application/json");
             return reply.ParseJson<SendGroupNewsReply>();
         }
     }

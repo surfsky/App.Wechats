@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.Caching;
 
@@ -95,7 +96,7 @@ namespace App.Wechats.Open
         {
             var json = menu.ToJson();
             string url = string.Format("https://api.weixin.qq.com/cgi-bin/menu/create?access_token={0}", WechatOpen.GetAccessTokenFromServer());
-            return HttpHelper.PostJson(url, json).ParseJson<WechatReply>();
+            return HttpHelper.Post(url, json, Encoding.UTF8, "application/json").ParseJson<WechatReply>();
         }
 
         /// <summary>获取微信公众号菜单</summary>

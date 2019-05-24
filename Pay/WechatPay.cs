@@ -138,7 +138,7 @@ namespace App.Wechats.Pay
         /// <summary>构建一次性随机字符串</summary>
         public static string BuildNonceStr()
         {
-            return Guid.NewGuid().ToString("N").Clip(32);
+            return Guid.NewGuid().ToString("N").SubText(32);
         }
 
 
