@@ -6,7 +6,7 @@ surfsky.github.com
 # Install
 ```
 
-Nuget: install-package App.Corer
+Nuget: install-package App.Wechats
 ```
 
 # 类库结构
