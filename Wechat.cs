@@ -35,10 +35,10 @@ namespace App.Wechats
     public class WechatUser : WechatReply
     {
         // 附加信息
-        public string mpId { get; set; }
-        public string mpSessionKey { get; set; }
-        public string webId { get; set; }
-        public string webSessionKey { get; set; }
+        public string mpId { get; set; }            // 小程序用户ID
+        public string mpSessionKey { get; set; }    // 小程序用户SessionKey
+        public string opId { get; set; }            // 公众号用户ID
+        public string opSessionKey { get; set; }    // 公众号用户SessionKey
 
         // 订阅信息
         public int subscribe { get; set; }          // 是否订阅该公众号

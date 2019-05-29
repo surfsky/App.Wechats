@@ -1,15 +1,15 @@
-﻿# About
+﻿# 1 关于
 
-微信公众号、小程序、支付相关操作类库。
-surfsky.github.com
+- 微信公众号、小程序、支付相关操作类库。
+- 作者：surfsky.github.com
 
-# Install
+# 2 安装
 ```
 
 Nuget: install-package App.Wechats
 ```
 
-# 类库结构
+# 3 类库结构
 
 ```
 App.Wechats         : 本类库根命名空间
@@ -26,9 +26,9 @@ App.Wechats.Pay     : 微信支付命名空间
 ps.本项目依赖 App.Core.dll，请自行引用
 ```
 
-# 使用
+# 4 使用
 
-##  配置参数
+## 4.1 配置参数
 
     （1）编写web.config中的appsetting部分。如：
 
@@ -57,22 +57,27 @@ ps.本项目依赖 App.Core.dll，请自行引用
     WechatConfig.OpenAppId = "AppId";
     WechatConfig.OpenAppSecret = "AppSecret";
 
-## 使用微信公众号接口
+## 4.2 使用微信公众号接口
 
 请使用 App.Wechats.Open.WechatOpen 类；
 微信公众号推送消息处理请使用 App.Wechats.Open.PushMessage 类
 
-## 使用微信小程序接口
+## 4.3 使用微信小程序接口
 
 请使用 App.Wechats.MP.WechatMP 类
 
-## 使用微信支付接口
+## 4.4 使用微信支付接口
 
 请使用 App.Wechats.Pay.WechatPay 类
 
+## 4.4 日志
 
-# 计划
-
-- 插入日志接口或事件（记录请求数据、返回数据、解析数据），便于调试记录
-- 编撰使用文档
+```c#
+// 微信接口操作日志
+WechatConfig.Instance.OnLog += (name, user, request, reply) =>
+{
+    var msg = new { Request = request, Reply = reply }.ToJson();
+    Logger.LogDb(name, msg, user);
+};
+```
 

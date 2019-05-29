@@ -124,14 +124,13 @@ namespace App.Wechats.Pay
             dict.Add("trade_type", tradeType);
             var sign = BuildPaySign(dict, mchKey);
             dict.Add("sign", sign);
-            //Logger.LogDb("WechatUnifiedOrder-dict", dict.ToJson());
+            //WechatConfig.Log("WechatUnifiedOrder-dict", openId, dict.ToJson());
 
             // 发送
             var xml = dict.ToXml("xml");
-            var back = HttpHelper.Post(url, xml);
-            var info = string.Format("微信统一支付：req=\"{0}\"; \r\nresp=\"{1}\"", xml, back);
-            //Logger.LogDb("WechatUnifiedOrder", info, openId, LogLevel.Debug);
-            return back.ParseXml<UnifiedOrderReply>();
+            var reply = HttpHelper.Post(url, xml);
+            WechatConfig.Log("WechatUnifiedOrder", openId, xml, reply);
+            return reply.ParseXml<UnifiedOrderReply>();
         }
 
 

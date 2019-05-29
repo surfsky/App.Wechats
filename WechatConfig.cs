@@ -22,20 +22,9 @@ namespace App.Wechats
     /// </summary>
     public class WechatConfig
     {
-        //
-        public static string GetAppId(WechatAppType type)
-        {
-            return (type == WechatAppType.Open) ? WechatConfig.OpenAppId : WechatConfig.MPAppId;
-        }
-        public static string GetAppSecret(WechatAppType type)
-        {
-            return (type == WechatAppType.Open) ? WechatConfig.OpenAppSecret : WechatConfig.MPAppSecret;
-        }
-        public static string GetPayUrl(WechatAppType type)
-        {
-            return (type == WechatAppType.Open) ? WechatConfig.OpenPayUrl : WechatConfig.MPPayUrl;
-        }
-
+        //---------------------------------------------
+        // 配置信息
+        //---------------------------------------------
         // 公众号配置信息
         public static  string OpenTokenServer = ConfigurationManager.AppSettings["WechatOpenTokenServer"]; // 微信公众号Token服务器地址，如： /HttpApi/Wechat/GetAccessToken?type=Web&refresh={0}&securityCode={1}
         public static  string OpenAppId = ConfigurationManager.AppSettings["WechatOpenAppID"];             // 微信公众号AppId   
@@ -55,5 +44,62 @@ namespace App.Wechats
         // 商户信息
         public static  string MchId = ConfigurationManager.AppSettings["WechatMchId"];                     // 微信商户号
         public static  string MchKey = ConfigurationManager.AppSettings["WechatMchKey"];                   // 商户平台设置的密钥key
+
+
+        //---------------------------------------------
+        // 辅助方法
+        //---------------------------------------------
+        public static string GetAppId(WechatAppType type)
+        {
+            return (type == WechatAppType.Open) ? WechatConfig.OpenAppId : WechatConfig.MPAppId;
+        }
+        public static string GetAppSecret(WechatAppType type)
+        {
+            return (type == WechatAppType.Open) ? WechatConfig.OpenAppSecret : WechatConfig.MPAppSecret;
+        }
+        public static string GetPayUrl(WechatAppType type)
+        {
+            return (type == WechatAppType.Open) ? WechatConfig.OpenPayUrl : WechatConfig.MPPayUrl;
+        }
+
+
+        //---------------------------------------------
+        // 单例
+        //---------------------------------------------
+        private static WechatConfig _instance = null;
+        public static WechatConfig Instance
+        {
+            get
+            {
+                if (_instance == null)
+                    _instance = new WechatConfig();
+                return _instance;
+            }
+        }
+
+
+        //---------------------------------------------
+        // 事件
+        //---------------------------------------------
+        public delegate void LogHandler(string name, string user, string request, string reply);
+
+        /// <summary>日志事件</summary>
+        /// <example>WechatConfig.Instance.OnLog += ....;</example>
+        public event LogHandler OnLog;
+
+        /// <summary>记录日志</summary>
+        public static void Log(string name, string user="", string request="", string reply="")
+        {
+            try
+            {
+                if (Instance.OnLog != null)
+                    Instance.OnLog(name, user, request, reply);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+
     }
 }

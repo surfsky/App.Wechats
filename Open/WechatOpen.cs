@@ -161,7 +161,7 @@ namespace App.Wechats.Open
             var url = string.Format("https://api.weixin.qq.com/sns/userinfo?access_token={0}&openid={1}&lang=zh_CN", accessToken, openId);
             var reply = HttpHelper.Get(url);
             var user = reply.ParseJson<WechatUser>();
-            user.webId = user.openid;
+            user.opId = user.openid;
             return user;
         }
 
@@ -209,7 +209,7 @@ namespace App.Wechats.Open
             var json = new { user_list = openIds.Cast(t => new { openid = t, lang = "zh-CN" }) }.ToJson();
             var reply = HttpHelper.Post(url, json);
             var users = reply.ParseJson<WechatUsers>();
-            users.user_info_list.ForEach(t => t.webId = t.openid);
+            users.user_info_list.ForEach(t => t.opId = t.openid);
             return users;
         }
 
@@ -235,7 +235,7 @@ namespace App.Wechats.Open
             var url = string.Format("https://api.weixin.qq.com/cgi-bin/user/info?access_token={0}&openid={1}", accessToken, openId);
             var reply = HttpHelper.Get(url);
             var user = reply.ParseJson<WechatUser>();
-            user.webId = user.openid;
+            user.opId = user.openid;
             return user;
         }
 
