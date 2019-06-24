@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using App.Core;
 
-namespace App.Wechats.Open
+namespace App.Wechats.OP
 {
     /// <summary>用户标签</summary>
     public class Tag
@@ -44,7 +44,7 @@ namespace App.Wechats.Open
     // 用户标签管理
     // https://mp.weixin.qq.com/wiki?t=resource/res_main&id=mp1421140837
     //------------------------------------------------------------------------------
-    public partial class WechatOpen
+    public partial class WechatOP
     {
         /*
         POST: { "tag":{ "name" : "广东"} }
@@ -123,9 +123,9 @@ namespace App.Wechats.Open
         /// <summary>设置微信公众号用户标签</summary>
         public static Tag TrySetUserTag(string openId, string tagName)
         {
-            var tag = WechatOpen.TryGetTag(tagName);
+            var tag = WechatOP.TryGetTag(tagName);
             if (tag != null)
-                WechatOpen.TrySetUserTag(openId, tag);
+                WechatOP.TrySetUserTag(openId, tag);
             return tag;
         }
 
@@ -133,12 +133,12 @@ namespace App.Wechats.Open
         static Tag TryGetTag(string tagName)
         {
             // 获取公众号已有的标签
-            var tags = WechatOpen.GetTags();
+            var tags = WechatOP.GetTags();
             var tag = tags.tags.Find(t => t.name == tagName);
             if (tag == null)
             {
                 // 如果不存在该标签，则新建
-                var reply = WechatOpen.CreateTag(tagName);
+                var reply = WechatOP.CreateTag(tagName);
                 if (reply.errcode == 0)
                 {
                     tag = new Tag();
@@ -153,11 +153,11 @@ namespace App.Wechats.Open
         static bool TrySetUserTag(string openId, Tag tag)
         {
             // 获取用户身上的标签
-            var userTags = WechatOpen.GetUserTags(openId);
+            var userTags = WechatOP.GetUserTags(openId);
             if (!userTags.tagid_list.Contains(tag.id))
             {
                 // 如果不包含该标签，则设置
-                var reply = WechatOpen.SetUserTag(new List<string>() { openId }, tag.id);
+                var reply = WechatOP.SetUserTag(new List<string>() { openId }, tag.id);
                 if (reply.errcode != 0)
                     return false;
             }

@@ -26,20 +26,20 @@ namespace App.Wechats
         // 配置信息
         //---------------------------------------------
         // 公众号配置信息
-        public static  string OpenTokenServer = ConfigurationManager.AppSettings["WechatOpenTokenServer"]; // 微信公众号Token服务器地址，如： /HttpApi/Wechat/GetAccessToken?type=Web&refresh={0}&securityCode={1}
-        public static  string OpenAppId = ConfigurationManager.AppSettings["WechatOpenAppID"];             // 微信公众号AppId   
-        public static  string OpenAppSecret = ConfigurationManager.AppSettings["WechatOpenAppSecret"];     // 微信公众号AppSecret 
-        public static  string OpenPushToken = ConfigurationManager.AppSettings["WechatOpenPushToken"];     // 微信公众号推送消息Token
-        public static  string OpenPushKey = ConfigurationManager.AppSettings["WechatOpenPushKey"];         // 微信公众号推送消息Key
-        public static  string OpenPayUrl = ConfigurationManager.AppSettings["WechatOpenPayUrl"];           // 微信公众号支付成功回调地址
+        public static  string OPTokenServer   = ConfigurationManager.AppSettings["WechatOPTokenServer"]; // 微信公众号Token服务器地址，如： /HttpApi/Wechat/GetAccessToken?type=Web&refresh={0}&securityCode={1}
+        public static  string OPAppId         = ConfigurationManager.AppSettings["WechatOPAppID"];             // 微信公众号AppId   
+        public static  string OPAppSecret     = ConfigurationManager.AppSettings["WechatOPAppSecret"];     // 微信公众号AppSecret 
+        public static  string OPPushToken     = ConfigurationManager.AppSettings["WechatOPPushToken"];     // 微信公众号推送消息Token
+        public static  string OPPushKey       = ConfigurationManager.AppSettings["WechatOPPushKey"];         // 微信公众号推送消息Key
+        public static  string OPPayUrl        = ConfigurationManager.AppSettings["WechatOPPayUrl"];           // 微信公众号支付成功回调地址
 
         // 小程序配置信息
-        public static  string MPTokenServer = ConfigurationManager.AppSettings["WechatMPTokenServer"];     // 微信小程序Token服务器地址，如：/HttpApi/Wechat/GetAccessToken?type=MP&refresh={0}&securityCode={1}
-        public static  string MPAppId = ConfigurationManager.AppSettings["WechatMPAppID"];                 // 微信小程序AppID
-        public static  string MPAppSecret = ConfigurationManager.AppSettings["WechatMPAppSecret"];         // 微信小程序AppSecret
-        public static  string MPPushToken = ConfigurationManager.AppSettings["WechatMPPushToken"];         // 微信小程序消息推送Token
-        public static  string MPPushKey = ConfigurationManager.AppSettings["WechatMPPushKey"];             // 微信小程序消息推送Key
-        public static  string MPPayUrl = ConfigurationManager.AppSettings["WechatMPPayUrl"];               // 微信小程序支付成功回调地址
+        public static  string MPTokenServer   = ConfigurationManager.AppSettings["WechatMPTokenServer"];     // 微信小程序Token服务器地址，如：/HttpApi/Wechat/GetAccessToken?type=MP&refresh={0}&securityCode={1}
+        public static  string MPAppId         = ConfigurationManager.AppSettings["WechatMPAppID"];                 // 微信小程序AppID
+        public static  string MPAppSecret     = ConfigurationManager.AppSettings["WechatMPAppSecret"];         // 微信小程序AppSecret
+        public static  string MPPushToken     = ConfigurationManager.AppSettings["WechatMPPushToken"];         // 微信小程序消息推送Token
+        public static  string MPPushKey       = ConfigurationManager.AppSettings["WechatMPPushKey"];             // 微信小程序消息推送Key
+        public static  string MPPayUrl        = ConfigurationManager.AppSettings["WechatMPPayUrl"];               // 微信小程序支付成功回调地址
 
         // 商户信息
         public static  string MchId = ConfigurationManager.AppSettings["WechatMchId"];                     // 微信商户号
@@ -51,15 +51,15 @@ namespace App.Wechats
         //---------------------------------------------
         public static string GetAppId(WechatAppType type)
         {
-            return (type == WechatAppType.Open) ? WechatConfig.OpenAppId : WechatConfig.MPAppId;
+            return (type == WechatAppType.Open) ? WechatConfig.OPAppId : WechatConfig.MPAppId;
         }
         public static string GetAppSecret(WechatAppType type)
         {
-            return (type == WechatAppType.Open) ? WechatConfig.OpenAppSecret : WechatConfig.MPAppSecret;
+            return (type == WechatAppType.Open) ? WechatConfig.OPAppSecret : WechatConfig.MPAppSecret;
         }
         public static string GetPayUrl(WechatAppType type)
         {
-            return (type == WechatAppType.Open) ? WechatConfig.OpenPayUrl : WechatConfig.MPPayUrl;
+            return (type == WechatAppType.Open) ? WechatConfig.OPPayUrl : WechatConfig.MPPayUrl;
         }
 
 

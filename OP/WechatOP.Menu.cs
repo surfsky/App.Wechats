@@ -9,7 +9,7 @@ using System.Web;
 using System.Web.Caching;
 
 
-namespace App.Wechats.Open
+namespace App.Wechats.OP
 {
     /// <summary>微信菜单项类型</summary>
     public enum WechatMenuType
@@ -87,7 +87,7 @@ namespace App.Wechats.Open
 
     /// <summary>
     /// </summary>
-    public partial class WechatOpen
+    public partial class WechatOP
     {
         /// <summary>设置微信公众号菜单</summary>
         /// <remarks>https://mp.weixin.qq.com/wiki?t=resource/res_main&id=mp1421141013</remarks>
@@ -95,7 +95,7 @@ namespace App.Wechats.Open
         public static WechatReply SetMenu(WechatMenu menu)
         {
             var json = menu.ToJson();
-            string url = string.Format("https://api.weixin.qq.com/cgi-bin/menu/create?access_token={0}", WechatOpen.GetAccessTokenFromServer());
+            string url = string.Format("https://api.weixin.qq.com/cgi-bin/menu/create?access_token={0}", WechatOP.GetAccessTokenFromServer());
             return HttpHelper.Post(url, json, Encoding.UTF8, "application/json").ParseJson<WechatReply>();
         }
 
@@ -103,7 +103,7 @@ namespace App.Wechats.Open
         /// <remarks>https://mp.weixin.qq.com/wiki?t=resource/res_main&id=mp1421141014</remarks>
         public static WechatMenu GetMenu()
         {
-            string url = string.Format("https://api.weixin.qq.com/cgi-bin/menu/get?access_token={0}", WechatOpen.GetAccessTokenFromServer());
+            string url = string.Format("https://api.weixin.qq.com/cgi-bin/menu/get?access_token={0}", WechatOP.GetAccessTokenFromServer());
             return HttpHelper.Get(url).ParseJson<WechatMenu>();
         }
 
@@ -111,7 +111,7 @@ namespace App.Wechats.Open
         /// <remarks>https://mp.weixin.qq.com/wiki?t=resource/res_main&id=mp1421141015</remarks>
         public static WechatReply DeleteMenu()
         {
-            string url = string.Format("https://api.weixin.qq.com/cgi-bin/menu/delete?access_token={0}", WechatOpen.GetAccessTokenFromServer());
+            string url = string.Format("https://api.weixin.qq.com/cgi-bin/menu/delete?access_token={0}", WechatOP.GetAccessTokenFromServer());
             return HttpHelper.Get(url).ParseJson<WechatReply>();
         }
     }

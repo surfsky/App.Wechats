@@ -17,8 +17,8 @@ App.Wechats         : 本类库根命名空间
     WechatConfig    : 微信配置信息
 App.Wechats.MP      : 微信小程序命名空间
     WechatMP        : 微信小程序类
-App.Wechats.Open    : 微信公众号命名空间
-    WechatOpen      : 微信公众号类
+App.Wechats.OP      : 微信公众号命名空间
+    WechatOP        : 微信公众号类
     PushMessage     : 微信公众号推送消息
 App.Wechats.Pay     : 微信支付命名空间
     WechatPay       : 微信支付类
@@ -33,12 +33,12 @@ ps.本项目依赖 App.Core.dll，请自行引用
     （1）编写web.config中的appsetting部分。如：
 
     <!-- 微信公众号 -->
-    <add key="WechatOpenAppID" value="-" />
-    <add key="WechatOpenAppSecret" value="-" />
-    <add key="WechatOpenPayUrl" value="Pay.ashx" />
-    <add key="WechatOpenPushToken" value="-" />
-    <add key="WechatOpenPushKey" value="-" />
-    <add key="WechatOpenTokenServer" value="GetAccessToken?type=Open&amp;refresh={0}" />
+    <add key="WechatOPAppID" value="-" />
+    <add key="WechatOPAppSecret" value="-" />
+    <add key="WechatOPPayUrl" value="Pay.ashx" />
+    <add key="WechatOPPushToken" value="-" />
+    <add key="WechatOPPushKey" value="-" />
+    <add key="WechatOPTokenServer" value="GetAccessToken?type=Open&amp;refresh={0}" />
 
     <!-- 微信小程序 -->
     <add key="WechatMPAppID" value="-" />

@@ -1,7 +1,7 @@
 ﻿using App.Core;
 using System.Text;
 
-namespace App.Wechats.Open
+namespace App.Wechats.OP
 {
 
     /// <summary>发送群组消息的反馈</summary>
@@ -15,7 +15,7 @@ namespace App.Wechats.Open
     /// 群发消息相关
     /// 参考：https://mp.weixin.qq.com/wiki?t=resource/res_main&id=mp1481187827_i0l21
     /// </summary>
-    public partial class WechatOpen
+    public partial class WechatOP
     {
         /// <summary>群发新闻消息（图文）</summary>
         public static SendGroupNewsReply SendGroupNews(int tagId, string mediaId)

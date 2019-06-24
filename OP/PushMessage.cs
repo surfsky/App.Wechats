@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace App.Wechats.Open
+namespace App.Wechats.OP
 {
     /// <summary>
     /// 微信公众号消息处理
