@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Caching;
 using System.Text;
-using App.Core;
+using App.Wechats.Utils;
 
 namespace App.Wechats
 {
@@ -161,6 +161,7 @@ namespace App.Wechats
         }
 
         /// <summary>获取访问Token（公众号和小程序通用）</summary>
+        /// <remarks>23_wF5vtroOiRXeXYA-jwuctjObnDqkFGYxvk1irfSd0neRa9okV8JO-6LmLNX7bTo_OLzB4gdidaigDvrqc_XGKtq4PFUl8m3ao-OPnlSo0GB1-oywcKlXLi8vuhvsbn3qOsD1BSkLUBlcR4ZsWGNaABAJTA</remarks>
         private static GetAccessTokenReply GetAccessTokenInternal(string appId, string appSecret)
         {
             var url = string.Format("https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid={0}&secret={1}", appId, appSecret);

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -55,19 +55,44 @@
     <Compile Include="OP\WechatOP.TMsg.cs" />
     <Compile Include="Pay\WechatPay.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utils\Convertor.cs" />
+    <Compile Include="Utils\Convertor.Encoder.cs" />
+    <Compile Include="Utils\Convertor.Parse.cs" />
+    <Compile Include="Utils\DateTimeHelper.cs" />
+    <Compile Include="Utils\DESEncrypt.cs" />
+    <Compile Include="Utils\EncryptHelper.cs" />
+    <Compile Include="Utils\EnumHelper.cs" />
+    <Compile Include="Utils\FreeDictionary.cs" />
+    <Compile Include="Utils\HttpHelper.cs" />
+    <Compile Include="Utils\IO.cs" />
+    <Compile Include="Utils\IO.File.cs" />
+    <Compile Include="Utils\JsonConverters.cs" />
+    <Compile Include="Utils\JsonHelper.cs" />
+    <Compile Include="Utils\ListHelper.cs" />
+    <Compile Include="Utils\ParamAttribute.cs" />
+    <Compile Include="Utils\Reflector.cs" />
+    <Compile Include="Utils\Reflector.Method.cs" />
+    <Compile Include="Utils\Reflector.Property.cs" />
+    <Compile Include="Utils\Reflector.Type.cs" />
+    <Compile Include="Utils\ResHelp.cs" />
+    <Compile Include="Utils\SerializationNode.cs" />
+    <Compile Include="Utils\StringHelper.cs" />
+    <Compile Include="Utils\TAttribute.cs" />
+    <Compile Include="Utils\UIAttribute.cs" />
+    <Compile Include="Utils\UIExtension.cs" />
+    <Compile Include="Utils\Url.cs" />
+    <Compile Include="Utils\Util.cs" />
+    <Compile Include="Utils\UtilConfig.cs" />
+    <Compile Include="Utils\XmlHelper.cs" />
+    <Compile Include="Utils\Xmlizer.cs" />
     <Compile Include="Wechat.cs" />
     <Compile Include="WechatConfig.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\App.Core\App.Core-github\App.Core\App.Core.csproj">
-      <Project>{c887d0a1-20f6-44da-87df-ea8d45ace744}</Project>
-      <Name>App.Core</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MP\WechatMP.TMsg.cs" />
     <None Include="packages.config" />
     <None Include="README.md" />
+    <None Include="Utils\README.md" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

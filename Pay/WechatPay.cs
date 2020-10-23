@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Xml;
-using App.Core;
+using App.Wechats.Utils;
 
 namespace App.Wechats.Pay
 {
@@ -175,7 +175,7 @@ namespace App.Wechats.Pay
         public static string BuildPaySign(Dictionary<string, string> dict, string mchKey)
         {
             var txt = Wechat.BuildSortQueryString(dict) + "&key=" + mchKey;
-            return txt.ToMD5().ToUpper();
+            return txt.MD5().ToUpper();
         }
 
         /// <summary>校验支付 XML 是否正确</summary>

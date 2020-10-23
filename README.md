@@ -23,7 +23,6 @@ App.Wechats.OP      : 微信公众号命名空间
 App.Wechats.Pay     : 微信支付命名空间
     WechatPay       : 微信支付类
 
-ps.本项目依赖 App.Core.dll，请自行引用
 ```
 
 # 4 使用
@@ -81,3 +80,14 @@ WechatConfig.Instance.OnLog += (name, user, request, reply) =>
 };
 ```
 
+# 5 History
+
+1.1
+    
+    发布1.1版本，包含依赖 App.Core
+    2019-10
+
+1.2
+     
+    去除 App.Core 依赖
+    2020-09

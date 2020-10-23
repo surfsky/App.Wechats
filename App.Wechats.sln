@@ -1,0 +1,17 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App.Wechats", "App.Wechats.csproj", "{0541BDA6-CA3B-49C9-89E4-68E071A9A1D9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0541BDA6-CA3B-49C9-89E4-68E071A9A1D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0541BDA6-CA3B-49C9-89E4-68E071A9A1D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0541BDA6-CA3B-49C9-89E4-68E071A9A1D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0541BDA6-CA3B-49C9-89E4-68E071A9A1D9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

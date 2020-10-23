@@ -1,4 +1,4 @@
-﻿using App.Core;
+﻿using App.Wechats.Utils;
 using System;
 using System.Collections.Generic;
 

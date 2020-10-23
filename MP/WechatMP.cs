@@ -2,7 +2,7 @@
 using System.Text;
 using System.Drawing;
 using System.Security.Cryptography;
-using App.Core;
+using App.Wechats.Utils;
 
 /// <summary>
 /// 微信小程序
@@ -181,7 +181,7 @@ namespace App.Wechats.MP
         /// <remarks>https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/signature.html</remarks>
         static string CalcSignature(string rawData, string sessionKey)
         {
-            return (rawData + sessionKey).ToSHA1();
+            return (rawData + sessionKey).SHA1();
         }
         
 

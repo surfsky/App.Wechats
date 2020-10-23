@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using App.Core;
+using App.Wechats.Utils;
 
 
 /*
@@ -114,7 +114,7 @@ namespace App.Wechats.OP
             var accessToken = GetAccessTokenFromServer();
             var ticket = GetJsSdkTicket(accessToken);
             var timestamp = DateTime.Now.ToTimeStamp();
-            var nonceStr = Guid.NewGuid().ToString().ToMD5();
+            var nonceStr = Guid.NewGuid().ToString().MD5();
             var signature = CalcJsSdkSignature(ticket, nonceStr, timestamp, url);
             return new JsSdkSignature() { AppId = appId, Timestamp = timestamp, NonceStr = nonceStr, Signature = signature, Ticket = ticket };
         }
@@ -123,12 +123,12 @@ namespace App.Wechats.OP
         static string GetJsSdkTicket(string accessToken)
         {
             var dt = DateTime.Now.AddMinutes(60);
-            return Asp.GetCacheData<string>("WechatJSAPITicket", dt, () =>
+            return IO.GetCache<string>("WechatJSAPITicket", () =>
             {
                 var url = string.Format("https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token={0}&type=jsapi", accessToken);
                 var txt = HttpHelper.Get(url);
                 return txt.ParseJObject()["ticket"].ToString();
-            });
+            }, dt);
         }
 
         /// <smmary>获取JS-SDK权限验证的签名Signature</summary>
@@ -140,7 +140,7 @@ namespace App.Wechats.OP
             dict.Add("timestamp", timestamp);
             dict.Add("url", url);
             var txt = BuildSortQueryString(dict);
-            return txt.ToSHA1();
+            return txt.SHA1();
         }
 
         /// <summary>获取微信网页授权登录信息</summary>
@@ -179,14 +179,14 @@ namespace App.Wechats.OP
         {
             var key = "WechatWebAccessToken";
             var dt = DateTime.Now.AddMinutes(60);
-            return Asp.GetCacheData<OAuthGetTokenReply>(key, dt, () =>
+            return IO.GetCache<OAuthGetTokenReply>(key, () =>
                 {
                    var url = string.Format("https://api.weixin.qq.com/sns/oauth2/access_token?appid={0}&secret={1}&code={2}&grant_type=authorization_code",
                        WechatConfig.OPAppId, WechatConfig.OPAppSecret, code
                        );
                    var reply = HttpHelper.Get(url);
                    return reply.ParseJson<OAuthGetTokenReply>();
-               });
+               }, dt);
         }
 
 
@@ -273,7 +273,7 @@ namespace App.Wechats.OP
             };
             var reply = HttpHelper.Post(url, data.ToJson());
             var o = reply.ParseJson<CreateQrCodeReply>();
-            return string.Format("https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket={0}", o.ticket.ToUrlEncode());
+            return string.Format("https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket={0}", o.ticket.UrlEncode());
         }
 
 
