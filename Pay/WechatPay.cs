@@ -101,11 +101,13 @@ namespace App.Wechats.Pay
         /// 内容是一样的
         /// </remarks>
         public static UnifiedOrderReply UnifiedOrder(
-            string appId, string appSecret, string payUrl, 
-            string body, double fee, string openId, string orderNo, string ip, string deviceInfo)
+            string appId, string payUrl, 
+            string body, double fee, string openId, string orderNo, string ip, 
+            string attach
+            )
         {
             var mchId     = WechatConfig.MchId;
-            var mchKey    = WechatConfig.MchKey;
+            var mchKey    = WechatConfig.MchApiKey;
 
             // 构建参数
             string url = "https://api.mch.weixin.qq.com/pay/unifiedorder";
@@ -113,6 +115,7 @@ namespace App.Wechats.Pay
             var tradeType = "JSAPI";
             var dict = new Dictionary<string, string>();
             dict.Add("appid", appId);
+            dict.Add("attach", attach);
             dict.Add("body", body);
             dict.Add("mch_id", mchId);
             dict.Add("nonce_str", nonceStr);
@@ -137,7 +140,7 @@ namespace App.Wechats.Pay
         /// <summary>构建一次性随机字符串</summary>
         public static string BuildNonceStr()
         {
-            return Guid.NewGuid().ToString("N").SubText(32);
+            return Guid.NewGuid().ToString("N").Substring(0, 32);
         }
 
 
@@ -156,7 +159,7 @@ namespace App.Wechats.Pay
         ///     'complete':function(res) { }
         /// })
         /// </remarks>
-        static string BuildPaySign(string appId, string prepayId, string nonceStr, DateTime dt)
+        public static string BuildPaySign(string appId, string prepayId, string nonceStr, DateTime dt)
         {
             string timeStamp = dt.ToTimeStamp();
             string package = string.Format("prepay_id={0}", prepayId);
@@ -166,12 +169,13 @@ namespace App.Wechats.Pay
             dict.Add("nonceStr", nonceStr);
             dict.Add("package", package);
             dict.Add("signType", "MD5");
-            return BuildPaySign(dict, WechatConfig.MchKey);
+            return BuildPaySign(dict, WechatConfig.MchApiKey);
         }
 
 
         /// <summary>构造微信支付签名</summary>
         /// <remarks>https://pay.weixin.qq.com/wiki/doc/api/wxa/wxa_api.php?chapter=4_3</remarks>
+        /// <param name="mchKey">微信支付 API 密钥</param>
         public static string BuildPaySign(Dictionary<string, string> dict, string mchKey)
         {
             var txt = Wechat.BuildSortQueryString(dict) + "&key=" + mchKey;

@@ -91,3 +91,6 @@ WechatConfig.Instance.OnLog += (name, user, request, reply) =>
      
     去除 App.Core 依赖
     2020-09
+
+1.2.3
+     WechatAppType.Open -> OP
